@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class StudentGradeCalculator {
+
+    public static void main(String[] args) {
+
+        Scanner sc= new Scanner(System.in);
+
+        System.out.println("Enter number of subjects: ");
+        int numberOfSubjects = sc.nextInt();
+
+        String[] subjects = new String[numberOfSubjects];
+        int[] grades = new int[numberOfSubjects];
+
+        for (int i = 0; i < numberOfSubjects; i++) {
+            System.out.println("Enter subject " + (i + 1) + ": ");
+            subjects[i] = sc.next();
+
+            System.out.println("Enter grade for subject " + (i + 1) + ": ");
+            grades[i] = sc.nextInt();
+        }
+
+        int totalGrade = 0;
+        for (int grade : grades) {
+            totalGrade += grade;
+        }
+
+        double averageGrade = (double) totalGrade / numberOfSubjects;
+
+        System.out.println("\nSubject Marks Grade: ");
+        for (int i = 0; i < numberOfSubjects; i++) {
+            System.out.println(subjects[i] + " " + grades[i] + " " + gradeLetter(grades[i]));
+        }
+
+        System.out.println("\nAverage Marks Grade: " + averageGrade + " " + gradeLetter(totalGrade));
+
+        sc.close();
+    }
+
+    public static String gradeLetter(int grade) {
+        if (grade >= 90) {
+            return "A";
+        } else if (grade >= 80) {
+            return "B";
+        } else if (grade >= 70) {
+            return "C";
+        } else if (grade >= 60) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+}
